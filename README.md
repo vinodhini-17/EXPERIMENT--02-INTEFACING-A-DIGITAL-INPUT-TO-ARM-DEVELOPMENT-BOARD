@@ -1,12 +1,13 @@
-# EXPERIMENT 02 INTEFACING A DIGITAL INPUT TO ARM DEVELOPMENT BOARD
-## Aim : To Interface a Digital Input  (userpush button  ) to ARM   development board and write a  program to obtain  the data and flash the led  
-## Components required : STM32 CUBE IDE, ARM IOT development board,  STM programmer tool.
-## Theory :
+# EXPERIMENT--02-INTEFACING-A-DIGITAL-INPUT-TO-ARM-DEVELOPMENT-BOARD
+## Aim:
+To Interface a Digital Input  (userpush button  ) to ARM   development board and write a  program to obtain  the data and flash the led  
+## Components required: STM32 CUBE IDE, ARM IOT development board,  STM programmer tool.
+## Theory 
 The full form of an ARM is an advanced reduced instruction set computer (RISC) machine, and it is a 32-bit processor architecture expanded by ARM holdings. The applications of an ARM processor include several microcontrollers as well as processors. The architecture of an ARM processor was licensed by many corporations for designing ARM processor-based SoC products and CPUs. This allows the corporations to manufacture their products using ARM architecture. Likewise, all main semiconductor companies will make ARM-based SOCs such as Samsung, Atmel, TI etc.
 
  
   
-## Procedure :
+## Procedure:
  1. click on STM 32 CUBE IDE, the following screen will appear 
  ![image](https://user-images.githubusercontent.com/36288975/226189166-ac10578c-c059-40e7-8b80-9f84f64bf088.png)
 
@@ -51,48 +52,45 @@ The full form of an ARM is an advanced reduced instruction set computer (RISC) m
 
 
 ## STM 32 CUBE PROGRAM :
-```
+~~~
 #include "main.h"
-#include <stdbool.h>
+#include<stdbool.h>
 void push_button();
 bool button_status;
-int main(void)
-{
-   HAL_Init();
-   System clock_config();
-   MX_GPIO_Init();
-   while (1)
-   {
-	      push_button();
-   }
-void push_button(){
-	button_status=HAL_GPIO_ReadPin(GPIOA,GPIO_PIN_13);
-	if(button_status==1)
-	{
-		HAL_GPIO_WritePin(GPIOB,GPIO_PIN_0,GPIO_PIN_SET);
-		HAL_Delay(500);
-		HAL_GPIO_WritePin(GPIOB,GPIO_PIN_0,GPIO_PIN_RESET);
-		HAL_Delay(500);
-	}
-	else
-	{
-		HAL_GPIO_WritePin(GPIOB,GPIO_PIN_0,GPIO_PIN_RESET);
-	}
+
+while (1)
+  {
+	  push_button();
+  }
 }
-```
+  void push_button()
+	  {
+		  button_status=HAL_GPIO_ReadPin(GPIOA,GPIO_PIN_0);
+		  if(button_status==1)
+		  {
+			  HAL_GPIO_WritePin(GPIOB,GPIO_PIN_0,GPIO_PIN_SET);
+			  HAL_Delay(500);
+			  HAL_GPIO_WritePin(GPIOB,GPIO_PIN_0,GPIO_PIN_RESET);
+			  HAL_Delay(500);
+
+		  }
+		  else
+		  {
+			  HAL_GPIO_WritePin(GPIOB,GPIO_PIN_0,GPIO_PIN_RESET);
+		  }
+	  }
+~~~
 
 
-## Output :
 
- ![WhatsApp Image 2025-03-19 at 10 26 49_c4c292f1](https://github.com/user-attachments/assets/dba65c3d-4c19-4e35-93ad-69b1d61e7cd1)
+## Output  :
+![image](https://github.com/user-attachments/assets/e8971b79-5eb0-4dad-b163-c1bc4a94dcde)
 
-
- ![WhatsApp Image 2025-03-19 at 10 26 49_d2ab2bb3](https://github.com/user-attachments/assets/05de2247-155a-4151-b0bf-3bf5978ca4d9)
-
-
-## layout of the circuit :
  
- ![WhatsApp Image 2025-03-19 at 10 26 49_d2492519](https://github.com/user-attachments/assets/41676e6c-05f9-45ba-ba5e-3dd669d31bf5)
+## layout of the circuit 
+![image](https://github.com/user-attachments/assets/6e2df691-21db-40a3-b017-bfb977d8427f)
 
+ 
+ 
 ## Result :
 Interfacing a digital Input (Pushbutton ) with ARM microcontroller based IOT development is executed and the results are verified.
